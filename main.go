@@ -1,10 +1,7 @@
 package main
 
 import (
-  "fmt"
-  "os"
-
-  "github.com/shiqinfeng1/app/cmd"
+  "github.com/shiqinfeng1/test_for_gogradle/app/cmd"
 )
 
 func main() {

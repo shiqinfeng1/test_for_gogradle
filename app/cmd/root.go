@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
-  
+
 var rootCmd = &cobra.Command{
 	Use:   "hugo",
 	Short: "Hugo is a very fast static site generator",
@@ -18,6 +18,13 @@ var rootCmd = &cobra.Command{
 		// Do Stuff Here
 	},
 }
+
+var (
+	cfgFile string
+	projectBase string 
+	userLicense string
+	Region string
+)
 
 func init() {
 	cobra.OnInitialize(initConfig)
@@ -52,8 +59,8 @@ func initConfig() {
 		// Find home directory.
 		home, err := homedir.Dir()
 		if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+			fmt.Println(err)
+			os.Exit(1)
 		}
 
 		// Search config in home directory with name ".cobra" (without extension).
@@ -63,7 +70,7 @@ func initConfig() {
 
 	if err := viper.ReadInConfig(); err != nil {
 		fmt.Println("Can't read config:", err)
-		os.Exit(1)
+		//os.Exit(1)
 	}
 }
 

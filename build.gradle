@@ -1,0 +1,23 @@
+plugins {
+    id 'com.github.blindpirate.gogradle' version '0.9.2' 
+}
+
+golang {
+    packagePath = 'github.com/shiqinfeng1/test_for_gogradle' 
+}
+dependencies {
+    golang {
+        build(['name':'github.com/mitchellh/go-homedir'])
+        build(['name':'github.com/spf13/cobra'])
+        build(['name':'github.com/spf13/viper'])
+    }
+}
+//构建
+build {
+    // 交叉编译的输出选项，注意，要求go 1.5+
+    targetPlatform = ['darwin-amd64','windows-amd64', 'linux-amd64', 'linux-386']
+    
+    // 输出文件的路径，可以是绝对路径（相对于项目目录）或者相对路径
+    // 其中的${}占位符会在交叉编译时被渲染
+    outputLocation = './.gogradle/${GOOS}_${GOARCH}_${PROJECT_NAME}${GOEXE}'
+}
